@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-    app
-    ~~~~~~~~~~~
-    The Flask application module.
 
-    :author: Jeff Kereakoglow
-    :date: 2014-11-14
-    :copyright: (c) 2014 by Alexis Digital
-    :license: MIT, see LICENSE for more details
-"""
 import os
 from .utils import prepare_json_response
 from flask import Flask, jsonify, request

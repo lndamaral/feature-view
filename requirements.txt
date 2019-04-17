@@ -7,3 +7,4 @@ SQLAlchemy==0.9.3
 itsdangerous==0.23
 passlib==1.6.1
 werkzeug
+gitpython

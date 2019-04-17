@@ -7,18 +7,22 @@ from app.models.repository import Repository
 
 mod = Blueprint("repositoty", __name__)
 
-@mod.route("/<string:repository>", methods=["GET"])
+@mod.route("/<repository>", methods=["GET"])
 def master(repository):
+    Repository().clone(repository)
+
     return jsonify(
         prepare_json_response(
             message=None,
             success=True,
-            data={"repository": repository}
+            data={"repository": repository_name}
         )
     )
 
-@mod.route("/<string:repository>/<string:branch>", methods=["GET"])
+@mod.route("/<repository>/<string:branch>", methods=["GET"])
 def branch(repository, branch):
+    Repository().clone_branch(repository_name, "master")
+    
     return jsonify(
         prepare_json_response(
             message=None,

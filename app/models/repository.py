@@ -2,11 +2,14 @@
 # -*- coding: utf-8 -*-
 
 from app import app
+from git import Repo
 
 class Repository():
 
-    def clone_repository(self, repository):
-        print("TODO")
+    repository = None
 
-    def switch_branch(self, branch):
-        print("TODO")
+    def clone(self, repository_name):
+        repository = Repo.clone_from("https://github.com/lndamaral/%s" % repository_name, "temp/%s" % repository_name,  branch='master', recursive=True)
+
+    def clone_branch(self, branch):
+        repository = Repo.clone_from("https://github.com/lndamaral/%s" % repository_name, "temp/%s" % repository_name, branch='master', recursive=True)
