@@ -1,15 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 from app import app
 from git import Repo
 
 class Repository():
 
-    repository = None
+    def clone(self, repository):
+        Repo.clone_from("git@github.com:ihm-software/%s.git" % repository, "temp/%s" % repository, branch='master')
 
-    def clone(self, repository_name):
-        repository = Repo.clone_from("https://github.com/lndamaral/%s" % repository_name, "temp/%s" % repository_name,  branch='master', recursive=True)
-
-    def clone_branch(self, branch):
-        repository = Repo.clone_from("https://github.com/lndamaral/%s" % repository_name, "temp/%s" % repository_name, branch='master', recursive=True)
+    def clone_branch(self, repository, branch):
+        repo = None
+        if (os.path.exists("temp/%s" % repository)):
+            repo = Repo("temp/%s" % repository)
+        else:
+            repo = Repo.clone_from("git@github.com:ihm-software/%s.git" % repository, "temp/%s" % repository)
+                               
+        git_ = repo.git
+        git_.checkout(branch)
+        git_.pull("--rebase")

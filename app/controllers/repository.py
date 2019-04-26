@@ -15,13 +15,13 @@ def master(repository):
         prepare_json_response(
             message=None,
             success=True,
-            data={"repository": repository_name}
+            data={"repository": repository}
         )
     )
 
 @mod.route("/<repository>/<string:branch>", methods=["GET"])
 def branch(repository, branch):
-    Repository().clone_branch(repository_name, "master")
+    Repository().clone_branch(repository, branch)
     
     return jsonify(
         prepare_json_response(
