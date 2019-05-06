@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import abort, Blueprint, request, jsonify, g, url_for
+
 from app.utils import *
 from app.models.repository import Repository
 from app import app
