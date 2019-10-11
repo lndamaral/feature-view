@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import abort, Blueprint, request, jsonify, g, url_for
+
 from app.utils import *
 from app.models.repository import Repository
 
@@ -9,18 +10,20 @@ mod = Blueprint("repositoty", __name__)
 
 @mod.route("/<repository>", methods=["GET"])
 def master(repository):
-    Repository().clone(repository)
+
+    Repository().clone_branch(repository, "master")
 
     return jsonify(
         prepare_json_response(
             message=None,
             success=True,
-            data={"repository": repository}
+            data={"repository": repository, "branch" : "master"}
         )
     )
 
 @mod.route("/<repository>/<string:branch>", methods=["GET"])
 def branch(repository, branch):
+
     Repository().clone_branch(repository, branch)
     
     return jsonify(
