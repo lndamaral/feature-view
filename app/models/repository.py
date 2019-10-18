@@ -14,7 +14,7 @@ class Repository():
         if (os.path.exists("temp/%s" % repository)):
             repo = Repo("temp/%s" % repository)
         else:
-            repo = Repo.clone_from( "https://github.com/lndamaral/%s.git" % repository, 
+            repo = Repo.clone_from( "https://github.com/{0}/{1}.git".format(os.getenv('GITHUB_PROFILE'), repository), 
                                     "temp/%s" % repository)
                                
         git_ = repo.git
