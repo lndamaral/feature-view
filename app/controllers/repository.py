@@ -36,7 +36,7 @@ def feature(repository, feature):
     features = parseAllFeatureFiles(path, files)
 
     for f in features:
-        if f['feature']['name'] == features:
+        if f['feature']['name'] == feature:
              return render_template('index.html', features=f, menu=menu, repository=repository)
     
     return render_template('index.html', features=features[0], menu=menu, repository=repository)

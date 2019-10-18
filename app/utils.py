@@ -25,7 +25,7 @@ def findFeaturesDir(repository):
     for root, dirs, files in os.walk("temp/%s" % repository, topdown=False):
         for name in dirs:
             if (name == "features"):
-                return os.path.join(os.path.abspath(root), name) + "\\"
+                return os.path.join(os.path.abspath(root), name)
 
 
 def findFeaturesFiles(path):
@@ -34,7 +34,7 @@ def findFeaturesFiles(path):
 
 def parseFeatureFile(path, files):
     parser = Parser()
-    feature = parser.parse(TokenScanner(path + files))
+    feature = parser.parse(TokenScanner(path + "/" + files))
     return feature
 
 def getAllFeatureNames(path, files):
